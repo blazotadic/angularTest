@@ -1,0 +1,10 @@
+<div>
+  <label>Label</label>
+  <input type="text" [(ngModel)]="myInputValue" />
+</div>
+
+<p>Value of 'myInputValue' is: {{ myInputValue }}</p>
+
+<button (click)="printValue()">Print value in console!</button>
+<br>
+<button (click)="changeValue()">Change value</button>
