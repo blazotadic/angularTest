@@ -15,11 +15,12 @@ export class NavbarComponent {
       path: "/home"
     },
     {
-      name: "Documentation",
-      path: "/documentation"
+      name: "Student",
+      path: "/student"
     },
     {
-      name: "About Us"
+      name: "Playground",
+      path: '/playground'
     },
     {
       name: "Contact",

@@ -1,27 +1,7 @@
 <app-navbar></app-navbar>
 
-<section class="container">
-  <app-playground></app-playground>
-</section>
-
-
-<!-- <p>This is my application</p>
-
-<p>{{ title }}</p>
-
-<div>
-  <button type="button" (click)="handleClick()">Click here!</button>
+<div class="container">
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
 </div>
-
-<hr/>
-
-<p *ngIf="showParagraph; else noData">This is paragraph</p>
-<ng-template #noData>
-  <p>There is no data...</p>
-</ng-template>
-
-<p [ngClass]="{'active': hasActiveClass}">Ng class demo</p>
-<button type="button" class="button is-primary is-light" (click)="toggleActiveClass()">Toggle class</button>
-
-
-<p [ngStyle]="{'color': 'blue'}"></p> -->

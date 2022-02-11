@@ -1,0 +1,36 @@
+<div class="columns">
+  <div class="column">
+    <table class="table">
+      <thead>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Program</th>
+        <th>Godine</th>
+        <th>Akcije</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.firstName }}</td>
+          <td>{{ student.lastName }}</td>
+          <td>{{ student.program }}</td>
+          <td>{{ student.age }}</td>
+          <td>
+            <span class="icon" (click)="showDetails(student)">
+              <i class="fas fa-info" style="cursor: pointer"></i>
+            </span>
+
+            <span class="icon" (click)="banStudent(student)">
+              <i class="fas fa-ban" style="cursor: pointer"></i>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="column">
+    <app-student-detail
+      [student]="selectedStudent"
+      (somethingHappenedInDetailComponent)="handleChangeInDetailComponent($event)"
+    ></app-student-detail>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div *ngIf="student">
+  <ul>
+    <li>Ime: {{ student.firstName }}</li>
+    <li>Prezime: {{ student.lastName }}</li>
+    <li>Program: {{ student.program }}</li>
+    <li>Godine: {{ student.age }}</li>
+  </ul>
+
+  <button
+    (click)="notifyParentComponent()"
+    type="button"
+    class="button is-primary">Notify student list component!</button>
+</div>
