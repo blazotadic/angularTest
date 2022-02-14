@@ -1,6 +1,6 @@
 <div>
   <label>Label</label>
-  <input type="text" [(ngModel)]="myInputValue" />
+  <input type="text" [(ngModel)]="myInputValue" [readonly]="!allowEdit" />
 </div>
 
 <p>Value of 'myInputValue' is: {{ myInputValue }}</p>

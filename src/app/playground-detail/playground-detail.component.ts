@@ -14,5 +14,8 @@ export class PlaygroundDetailComponent implements OnInit {
   ngOnInit(): void {
       const params = this.activatedRoute.snapshot.params;
       this.params = params;
+
+      const data = this.activatedRoute.snapshot.data;
+      console.log(data);
   }
 }
