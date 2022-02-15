@@ -1,0 +1,21 @@
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+  <thead>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let role of roles">
+      <td>{{ role.name }}</td>
+      <td>{{ role.description }}</td>
+      <td>
+        <span class="icon pointer">
+          <i class="fas fa-info"></i>
+        </span>
+        <span class="icon pointer">
+          <i class="fas fa-trash"></i>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

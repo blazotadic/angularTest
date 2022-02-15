@@ -15,6 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { PlaygroundDetailComponent } from './playground-detail/playground-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserPreviewComponent } from './admin/users/preview/user-preview.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { UserPreviewComponent } from './admin/users/preview/user-preview.compone
     StudentDetailComponent,
     ProgramComponent,
     PlaygroundDetailComponent,
+    AboutComponent,
+    ContactComponent,
     AdminComponent,
     UserPreviewComponent
   ],

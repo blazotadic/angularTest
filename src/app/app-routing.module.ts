@@ -1,7 +1,10 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AboutComponent } from "./about/about.component";
 import { AdminComponent } from "./admin/admin.component";
+import { RolePreviewComponent } from "./admin/roles/preview/role-preview.component";
 import { UserPreviewComponent } from "./admin/users/preview/user-preview.component";
+import { ContactComponent } from "./contact/contact.component";
 import { PlaygroundDetailComponent } from "./playground-detail/playground-detail.component";
 import { PlaygroundDetailResolver } from "./playground-detail/playground-detail.resolver";
 import { PlaygroundComponent } from "./playground/playground.component";
@@ -25,12 +28,19 @@ const routes: Routes = [
     resolve: { param1: PlaygroundDetailResolver }
   },
   {
+    path: 'about', component: AboutComponent
+  },
+  {
+    path: 'contact', component: ContactComponent
+  },
+  {
     path: 'admin', // http://localhost:4200/admin
     component: AdminComponent,
     // canActivate: [],
     // canActivateChild: []
     children: [
-      { path: 'users', component: UserPreviewComponent } // http://localhost:4200/admin/users
+      { path: 'users', component: UserPreviewComponent },
+      { path: 'roles', component: RolePreviewComponent }
     ]
   },
   {
