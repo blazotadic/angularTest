@@ -4,7 +4,10 @@ import { AboutComponent } from "./about/about.component";
 import { AdminComponent } from "./admin/admin.component";
 import { RolePreviewComponent } from "./admin/roles/preview/role-preview.component";
 import { UserPreviewComponent } from "./admin/users/preview/user-preview.component";
+import { IsAlreadyAuthenticatedGuard } from "./auth/guards/is-already-authenticated.guard";
+import { IsAuthenticatedGuard } from "./auth/guards/is-authenticated.guard";
 import { ContactComponent } from "./contact/contact.component";
+import { LoginComponent } from "./login/login.component";
 import { PlaygroundDetailComponent } from "./playground-detail/playground-detail.component";
 import { PlaygroundDetailResolver } from "./playground-detail/playground-detail.resolver";
 import { PlaygroundComponent } from "./playground/playground.component";
@@ -34,9 +37,14 @@ const routes: Routes = [
     path: 'contact', component: ContactComponent
   },
   {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [IsAlreadyAuthenticatedGuard]
+  },
+  {
     path: 'admin', // http://localhost:4200/admin
     component: AdminComponent,
-    // canActivate: [],
+    canActivate: [IsAuthenticatedGuard],
     // canActivateChild: []
     children: [
       { path: 'users', component: UserPreviewComponent },

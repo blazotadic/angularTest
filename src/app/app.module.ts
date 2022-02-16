@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -17,6 +17,9 @@ import { AdminComponent } from './admin/admin.component';
 import { UserPreviewComponent } from './admin/users/preview/user-preview.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
+import { JwtInterceptor } from './auth/interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './auth/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { ContactComponent } from './contact/contact.component';
     AboutComponent,
     ContactComponent,
     AdminComponent,
-    UserPreviewComponent
+    UserPreviewComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,11 @@ import { ContactComponent } from './contact/contact.component';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [StudentService],
+  providers: [
+    StudentService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
