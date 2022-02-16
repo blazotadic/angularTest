@@ -1,4 +1,4 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
@@ -15,8 +15,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
-      .pipe(catchError(errorResponse => {
-        console.log('Error status: ', errorResponse.status);
+      .pipe(catchError((errorResponse: any) => {
         if (errorResponse.status === 401) {
           this.authService.logout();
           this.router.navigate(['login']);
