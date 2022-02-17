@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,8 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './auth/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './auth/interceptors/error.interceptor';
+import { RegisterComponent } from './register/register.component';
+import { ToastNotificationsModule } from 'ngx-toast-notifications';
 
 @NgModule({
   declarations: [
@@ -36,9 +39,12 @@ import { ErrorInterceptor } from './auth/interceptors/error.interceptor';
     AdminComponent,
     UserPreviewComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastNotificationsModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
