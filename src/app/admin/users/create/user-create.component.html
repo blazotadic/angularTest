@@ -1,0 +1,74 @@
+<div class="columns">
+  <div class="column is-half">
+    <form [formGroup]="userCreateForm" (ngSubmit)="createUser()">
+      <div class="field">
+        <label class="label">First name</label>
+        <div class="control">
+          <input class="input" type="text"
+            placeholder="Type first name..."
+            formControlName="firstName">
+          <p class="help is-danger"
+            *ngIf="userCreateForm.controls.firstName.touched && !userCreateForm.controls.firstName.valid">First name is required!</p>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Last name</label>
+        <div class="control">
+          <input class="input" type="text"
+            placeholder="Type last name..."
+            formControlName="lastName">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="control">
+          <input class="input"
+            type="text" placeholder="Type username..."
+            formControlName="username">
+
+          <!-- Required -->
+          <p class="help is-danger"
+            *ngIf="userCreateForm.controls.username.touched && userCreateForm.controls.username.errors?.required">Username is required!</p>
+
+          <!-- Min Length -->
+          <p class="help is-danger"
+            *ngIf="userCreateForm.controls.username.touched
+              && userCreateForm.controls.username.errors?.minlength">Username length is under {{ userCreateForm.controls.username.errors?.minlength.requiredLength }}</p>
+
+          <!-- Custom sync validator -->
+          <p class="help is-danger"
+            *ngIf="userCreateForm.controls.username.touched
+              && userCreateForm.controls.username.errors?.usernameInvalid">Can not use username {{ userCreateForm.controls.username.errors?.usernameInvalid }}</p>
+
+          <!-- Progress Bar for async validator -->
+          <progress class="progress is-info" max="100" *ngIf="userCreateForm.controls.username.pending">30%</progress>
+
+          <!-- Async validator -->
+          <p class="help is-danger"
+            *ngIf="userCreateForm.controls.username.touched
+              && userCreateForm.controls.username.errors?.usernameAlreadyExists">Username {{ userCreateForm.controls.username.errors?.usernameAlreadyExists }} already exists!</p>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input"
+            type="password" placeholder="Type password..."
+            formControlName="password">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Roles</label>
+        <div class="control">
+          <div class="select is-multiple">
+            <select multiple formControlName="roles">
+              <option *ngFor="let role of roles" [value]="role">{{ role.name }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="button is-primary">Create</button>
+      <!-- [disabled]="!userCreateForm.valid" -->
+    </form>
+  </div>
+</div>

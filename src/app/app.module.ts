@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlaygroundComponent } from './playground/playground.component';
 import { StudentComponent } from './student/student.component';
 import { StudentListComponent } from './student/list/student-list.component';
@@ -23,6 +23,7 @@ import { JwtInterceptor } from './auth/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './auth/interceptors/error.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { ToastNotificationsModule } from 'ngx-toast-notifications';
+import { UserCreateComponent } from './admin/users/create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -40,12 +41,14 @@ import { ToastNotificationsModule } from 'ngx-toast-notifications';
     UserPreviewComponent,
     LoginComponent,
     RegisterComponent,
+    UserCreateComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ToastNotificationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
   ],
