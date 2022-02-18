@@ -35,7 +35,7 @@ export class RegisterComponent {
   }
 
   private handleError(error) {
-    console.log('Error occurred!');
+    console.log('Error occurred!', error);
     this.toaster.open('Error has been occurred!', {
       position: 'top-right',
       type: 'warning'
