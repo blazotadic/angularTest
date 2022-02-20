@@ -36,7 +36,7 @@ export class UserCreateComponent implements OnInit {
       firstName: new FormControl(null, Validators.required),
       lastName: new FormControl(null, Validators.required),
       username: new FormControl(null, [Validators.required, Validators.minLength(6), this.validateUsername.bind(this)], UserValidator.doesUsernameExists(this.userService)),
-      password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(8), this.validatePasswors.bind(this)]),
       roles: new FormControl(null)
     });
   }
@@ -49,5 +49,21 @@ export class UserCreateComponent implements OnInit {
       };
     }
     return null;
+  }
+
+  private validatePasswors(control: FormControl): any | null {
+    const passwprd = control.value;
+    var checkNumber = /\d/;
+    var checkSpecChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    var checkUpperCase = /[A-Z]/;
+    if(!checkNumber.test(passwprd)){
+      passwordInvalid: 'number'
+    }
+    else if(!checkSpecChar.test(passwprd)){
+      passwordInvalid: 'special characters'
+    }
+    else if(!checkUpperCase.test(passwprd)){
+      passwordInvalid: 'uppercase'
+    }
   }
 }

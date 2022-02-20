@@ -47,6 +47,8 @@
           <p class="help is-danger"
             *ngIf="userCreateForm.controls.username.touched
               && userCreateForm.controls.username.errors?.usernameAlreadyExists">Username {{ userCreateForm.controls.username.errors?.usernameAlreadyExists }} already exists!</p>
+
+
         </div>
       </div>
       <div class="field">
@@ -55,6 +57,12 @@
           <input class="input"
             type="password" placeholder="Type password..."
             formControlName="password">
+
+          <!-- Private custom sync validator -->
+          <p class="help is-danger"
+          *ngIf="userCreateForm.controls.password.touched
+            && userCreateForm.controls.password.errors?.passwordInvalid">Password must contain {{ userCreateForm.controls.password.errors?.passwordInvalid }}! </p>
+
         </div>
       </div>
       <div class="field">
