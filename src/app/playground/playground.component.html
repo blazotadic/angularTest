@@ -1,3 +1,18 @@
+<p>Test</p>
+<div>
+  <ul *ngFor="let item of data$ | async">
+    <li>Id: {{ item.id }}</li>
+    <li>Name: {{ item.name }}</li>
+  </ul>
+</div>
+
+<!-- <div>
+  <li>{{ (person$ | async)?.id }}</li>
+  <li>{{ (person$ | async)?.name }}</li>
+</div> -->
+
+
+
 <div>
   <label>Label</label>
   <input type="text" [(ngModel)]="myInputValue" [readonly]="!allowEdit" />
@@ -8,3 +23,46 @@
 <button (click)="printValue()">Print value in console!</button>
 <br>
 <button (click)="changeValue()">Change value</button>
+
+<br><br>
+
+<hr/>
+
+<div class="columns">
+  <div class="column">
+    <form [formGroup]="reservationForm" (ngSubmit)="makeReservation()">
+      <div class="field">
+        <label class="label">Full name</label>
+        <div class="control">
+          <input class="input" type="text"
+            placeholder="Type full name..."
+            formControlName="fullName">
+        </div>
+      </div>
+      <!-- Children Array Data -->
+      <div formArrayName="children" *ngFor="let child of reservationForm.get('children')['controls']; let i = index">
+        <div [formGroupName]="i">
+          <div class="field">
+            <label class="label">Child Name</label>
+            <div class="control">
+              <input class="input" type="text"
+                placeholder="Type name..."
+                formControlName="childName">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Child Age</label>
+            <div class="control">
+              <input class="input" type="number"
+                placeholder="Type age..."
+                formControlName="childAge">
+            </div>
+          </div>
+          <button type="button" class="button is-danger" (click)="removeFormControl(i)">Remove Child</button>
+        </div>
+      </div>
+      <button type="button" class="button is-light" (click)="addFormGroup()">Add Child</button>
+      <button type="submit" class="button is-primary">Make Reservation</button>
+    </form>
+  </div>
+</div>
