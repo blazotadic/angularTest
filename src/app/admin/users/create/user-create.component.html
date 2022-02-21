@@ -58,7 +58,7 @@
             type="password" placeholder="Type password..."
             formControlName="password">
 
-          <!-- Private custom sync validator -->
+          <!-- Private custom sync validator domaci-->
           <p class="help is-danger"
           *ngIf="userCreateForm.controls.password.touched
             && userCreateForm.controls.password.errors?.passwordInvalid">Password must contain {{ userCreateForm.controls.password.errors?.passwordInvalid }}! </p>

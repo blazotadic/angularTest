@@ -36,7 +36,7 @@ export class UserCreateComponent implements OnInit {
       firstName: new FormControl(null, Validators.required),
       lastName: new FormControl(null, Validators.required),
       username: new FormControl(null, [Validators.required, Validators.minLength(6), this.validateUsername.bind(this)], UserValidator.doesUsernameExists(this.userService)),
-      password: new FormControl(null, [Validators.required, Validators.minLength(8), this.validatePasswors.bind(this)]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(8), /*domaci*/this.validatePasswors.bind(this)]),
       roles: new FormControl(null)
     });
   }
@@ -50,7 +50,7 @@ export class UserCreateComponent implements OnInit {
     }
     return null;
   }
-
+  //domaci
   private validatePasswors(control: FormControl): any | null {
     const passwprd = control.value;
     var checkNumber = /\d/;
