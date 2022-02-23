@@ -6,19 +6,6 @@
   </ul>
 </div>
 
-<!-- <div>
-  <li>{{ (person$ | async)?.id }}</li>
-  <li>{{ (person$ | async)?.name }}</li>
-</div> -->
-
-
-
-<div>
-  <label>Label</label>
-  <input type="text" [(ngModel)]="myInputValue" [readonly]="!allowEdit" />
-</div>
-
-<p>Value of 'myInputValue' is: {{ myInputValue }}</p>
 
 <button (click)="printValue()">Print value in console!</button>
 <br>
@@ -39,8 +26,8 @@
             formControlName="fullName">
         </div>
       </div>
-      <!-- Children Array Data -->
-      <div formArrayName="children" *ngFor="let child of reservationForm.get('children')['controls']; let i = index">
+
+      <div formArrayName="children" *ngFor="let child of getChildrenControls(); let i = index">
         <div [formGroupName]="i">
           <div class="field">
             <label class="label">Child Name</label>
@@ -66,3 +53,21 @@
     </form>
   </div>
 </div>
+
+<hr/>
+
+<!-- Build in pipes -->
+<h3 class="title is-3">Pipes</h3>
+<p>{{ '2022-02-23 18:40:00' | date:'shortTime' }}</p>
+
+<!-- Custom pipes -->
+<p>{{ 'This is input' | custom }}</p>
+
+
+<ul *ngFor="let category of 'Kategorija1#Kategorija2#Kategorija3' | custom:'#'">
+  <li>{{ category }}</li>
+</ul>
+
+
+<p [customDirective]
+  [defaultColor]="'red'">Paragraph here...</p>
