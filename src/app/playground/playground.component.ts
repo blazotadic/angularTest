@@ -115,6 +115,11 @@ export class PlaygroundComponent implements OnInit, OnDestroy {
     childrenControl.removeAt(position);
   }
 
+  getChildrenControls() {
+    const children = this.reservationForm.get('children') as FormArray;
+    return children.controls;
+  }
+
   makeReservation() {
     console.log(this.reservationForm);
   }

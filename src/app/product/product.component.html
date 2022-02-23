@@ -1,0 +1,31 @@
+<div class="mt-5">
+  <form [formGroup]="productSearchForm">
+    <div class="field">
+      <div class="control has-icons-left has-icons-right">
+        <input class="input" type="text"
+          placeholder="Find products..."
+          formControlName="searchTerm">
+        <span class="icon is-small is-right">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+    </div>
+    <hr />
+  </form>
+</div>
+<div class="columns">
+  <div class="column" *ngFor="let product of products">
+    <div class="card">
+      <!-- <img [src]="product.images" /> -->
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">{{ product.name }}</p>
+            <p class="subtitle is-6">{{ product.category?.name }}</p>
+          </div>
+        </div>
+        <div class="content">{{ product.description }}</div>
+      </div>
+    </div>
+  </div>
+</div>
