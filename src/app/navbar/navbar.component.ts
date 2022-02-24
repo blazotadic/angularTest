@@ -32,6 +32,10 @@ export class NavbarComponent implements OnInit {
     {
       name: "About Us",
       path: "/about"
+    },
+    {
+      name: "Products",
+      path: "/products"
     }
   ];
 

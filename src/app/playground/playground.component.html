@@ -1,10 +1,73 @@
+<p>Test</p>
 <div>
-  <label>Label</label>
-  <input type="text" [(ngModel)]="myInputValue" [readonly]="!allowEdit" />
+  <ul *ngFor="let item of data$ | async">
+    <li>Id: {{ item.id }}</li>
+    <li>Name: {{ item.name }}</li>
+  </ul>
 </div>
 
-<p>Value of 'myInputValue' is: {{ myInputValue }}</p>
 
 <button (click)="printValue()">Print value in console!</button>
 <br>
 <button (click)="changeValue()">Change value</button>
+
+<br><br>
+
+<hr/>
+
+<div class="columns">
+  <div class="column">
+    <form [formGroup]="reservationForm" (ngSubmit)="makeReservation()">
+      <div class="field">
+        <label class="label">Full name</label>
+        <div class="control">
+          <input class="input" type="text"
+            placeholder="Type full name..."
+            formControlName="fullName">
+        </div>
+      </div>
+
+      <div formArrayName="children" *ngFor="let child of getChildrenControls(); let i = index">
+        <div [formGroupName]="i">
+          <div class="field">
+            <label class="label">Child Name</label>
+            <div class="control">
+              <input class="input" type="text"
+                placeholder="Type name..."
+                formControlName="childName">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Child Age</label>
+            <div class="control">
+              <input class="input" type="number"
+                placeholder="Type age..."
+                formControlName="childAge">
+            </div>
+          </div>
+          <button type="button" class="button is-danger" (click)="removeFormControl(i)">Remove Child</button>
+        </div>
+      </div>
+      <button type="button" class="button is-light" (click)="addFormGroup()">Add Child</button>
+      <button type="submit" class="button is-primary">Make Reservation</button>
+    </form>
+  </div>
+</div>
+
+<hr/>
+
+<!-- Build in pipes -->
+<h3 class="title is-3">Pipes</h3>
+<p>{{ '2022-02-23 18:40:00' | date:'shortTime' }}</p>
+
+<!-- Custom pipes -->
+<p>{{ 'This is input' | custom }}</p>
+
+
+<ul *ngFor="let category of 'Kategorija1#Kategorija2#Kategorija3' | custom:'#'">
+  <li>{{ category }}</li>
+</ul>
+
+
+<p [customDirective]
+  [defaultColor]="'red'">Paragraph here...</p>

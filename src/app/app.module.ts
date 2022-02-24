@@ -24,6 +24,10 @@ import { ErrorInterceptor } from './auth/interceptors/error.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { ToastNotificationsModule } from 'ngx-toast-notifications';
 import { UserCreateComponent } from './admin/users/create/user-create.component';
+import { ProductComponent } from './product/product.component';
+import { CommonModule } from '@angular/common';
+import { CustomPipe } from './shared/custom.pipe';
+import { CustomDirective } from './shared/custom.directive';
 
 @NgModule({
   declarations: [
@@ -42,9 +46,13 @@ import { UserCreateComponent } from './admin/users/create/user-create.component'
     LoginComponent,
     RegisterComponent,
     UserCreateComponent,
+    ProductComponent,
+    CustomPipe,
+    CustomDirective,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     ToastNotificationsModule,
     FormsModule,
