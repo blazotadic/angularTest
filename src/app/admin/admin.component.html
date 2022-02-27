@@ -60,6 +60,9 @@
 </div>
 
 <hr />
+<button class="button is-fullwidth" (click)="getTableEmployee()">{{btnName}}</button>
+<app-table [columnData]="columnData" [dataTable]="dataTable" *ngIf="tableEmployee"></app-table>
+
 
 <!-- Children routing place... -->
 <router-outlet></router-outlet>

@@ -28,6 +28,7 @@ import { ProductComponent } from './product/product.component';
 import { CommonModule } from '@angular/common';
 import { CustomPipe } from './shared/custom.pipe';
 import { CustomDirective } from './shared/custom.directive';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CustomDirective } from './shared/custom.directive';
     ProductComponent,
     CustomPipe,
     CustomDirective,
+    TableComponent
   ],
   imports: [
     BrowserModule,

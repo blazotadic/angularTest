@@ -1,0 +1,26 @@
+<table class="table mt-5">
+    <tr class="has-text-weight-bold">
+        <td>{{ columnData.nameFirstColumn }}</td>
+        <td>{{ columnData.nameSecondColumn }}</td>
+        <td>{{ columnData.nameThirdColumn }}</td>
+        <td>{{ columnData.nameFourthColumn }}</td>
+        <td>{{ columnData.nameFifthColumn }}</td>
+    </tr>
+    <tr *ngFor="let employee of mainData">
+      <td>{{ employee.firstName }}</td>
+      <td>{{ employee.lastName }}</td>
+      <td>{{ employee.username}}</td>
+      <td>{{ employee.isActive }}</td>
+      <td>{{ employee.actions }}</td>
+    </tr>
+</table>
+
+<nav class="pagination" role="navigation" aria-label="pagination">
+    <a class="pagination-previous " (click)="pageBefore()" >Previous</a>
+    <a class="pagination-next" (click)="pageNext()">Next page</a>
+    <ul class="pagination-list">
+      <li *ngFor="let number of Pages">
+        <a class="pagination-link " (click)="pageNumber(number)">{{number}}</a>
+      </li>
+    </ul>
+</nav>

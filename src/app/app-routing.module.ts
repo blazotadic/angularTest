@@ -16,6 +16,7 @@ import { PlaygroundGuard } from "./playground/playground.guard";
 import { ProductComponent } from "./product/product.component";
 import { RegisterComponent } from "./register/register.component";
 import { StudentComponent } from "./student/student.component";
+import { TableComponent } from "./table/table.component";
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductComponent
+  },
+  {
+    path: 'table',
+   component: TableComponent
   },
   {
     path: 'admin', // http://localhost:4200/admin
