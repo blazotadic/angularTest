@@ -1,6 +1,8 @@
+import { Content } from "@angular/compiler/src/render3/r3_ast";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { debounceTime, switchMap } from "rxjs/operators";
+import { Subject } from "rxjs";
+import { debounceTime, switchMap, takeUntil } from "rxjs/operators";
 import { ProductService } from "./product.service";
 
 @Component({
@@ -9,12 +11,27 @@ import { ProductService } from "./product.service";
 })
 export class ProductComponent implements OnInit {
 
+  unsubscribeSubject$ = new Subject<void>();
   productSearchForm: FormGroup;
   products: any[] = [];
+  page: number = 0;
+  size: number = 3;
 
   constructor(
     private productService: ProductService
   ) { }
+
+  loadMore() : void{
+    this.page++;
+    const value = this.productSearchForm.get('searchTerm').value
+    this.productService.searchByTermPageable(value, this.page, this.size)
+    .pipe().subscribe(Content => {
+      this.products = Content;
+    }, error => {
+      console.log(error);
+    });
+
+  }
 
 
   ngOnInit(): void {
@@ -23,15 +40,25 @@ export class ProductComponent implements OnInit {
     this.productSearchForm.get('searchTerm').valueChanges
       .pipe(
         debounceTime(1000),
+        takeUntil(this.unsubscribeSubject$),
         switchMap((value: string) => {
-          return this.productService.searchByTerm(value);
+          this.page = 0;
+          return this.productService.searchByTermPageable(value, this.page, this.size);
+          //return this.productService.searchByTerm(value);
         })
       ).subscribe(data => {
         this.products = data;
       }, error => {
         console.log(error);
-        // this.products = [];
+         //this.products = [];
       });
+
+  }
+
+  ngOndestroy() : void {
+    this.products = [];
+    this.unsubscribeSubject$.next();
+    this.unsubscribeSubject$.complete();
   }
 
   private initializeForm(): void {
@@ -40,3 +67,4 @@ export class ProductComponent implements OnInit {
     });
   }
 }
+

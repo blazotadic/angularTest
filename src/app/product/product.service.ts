@@ -12,4 +12,9 @@ export class ProductService {
     const url = `${environment.apiUrl}product/search/by-name-or-desc?term=${searchTerm}`;
     return this.httpClient.get(url);
   }
+
+  searchByTermPageable(searchTerm: string, page: number, size: number): Observable<any> {
+    const url = `${environment.apiUrl}product/search/by-name-or-desc-pageable?term=${searchTerm}&page=${page}&size=${size}`;
+    return this.httpClient.get(url);
+  }
 }
